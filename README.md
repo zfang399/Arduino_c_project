@@ -23,11 +23,11 @@ In the game, a digital figure appears on the screen, and users can use a button 
  
 Hardware
 Sensors/input:
-Button switch: The button switch is used to start the game and to ask the figure to jump. By attaching an interrupt of button to the program, we can make change to the display efficiently whenever the button is pushed. 
-Potentiometer: The potentiometer is used to control the speed of the blocks. At the beginning of the game, the potentiometer is used to adjust the speed of the game, shown by the number of illuminating blocks on the LCD. By connecting the potentiometer to one of the analog input, we can then map the value of analogRead to the interval of the speed. 
+1. Button switch: The button switch is used to start the game and to ask the figure to jump. By attaching an interrupt of button to the program, we can make change to the display efficiently whenever the button is pushed. 
+2. Potentiometer: The potentiometer is used to control the speed of the blocks. At the beginning of the game, the potentiometer is used to adjust the speed of the game, shown by the number of illuminating blocks on the LCD. By connecting the potentiometer to one of the analog input, we can then map the value of analogRead to the interval of the speed. 
 Actuators/output:
-Piezo: Though the piezo can be used both as an actuator and a sensor, we are only using its function as an actuator. In the program, the piezo is virtually connected to the button by an interrupt. Whenever the button is pressed (i.e. the figure jumps up or down), the piezo will make a sound accordingly. When the game ends, similarly, the piezo will also make a sound to mark that.
-LCD (Liquid Crystal Display): LCD is an important component of our design. The LCD pins are connected to some pins on arduino board. All changes (i.e. graphical progress, figure movement, score display, game speed, etc) are all delivered to the user through the 2*16 screen.
+1. Piezo: Though the piezo can be used both as an actuator and a sensor, we are only using its function as an actuator. In the program, the piezo is virtually connected to the button by an interrupt. Whenever the button is pressed (i.e. the figure jumps up or down), the piezo will make a sound accordingly. When the game ends, similarly, the piezo will also make a sound to mark that.
+2. LCD (Liquid Crystal Display): LCD is an important component of our design. The LCD pins are connected to some pins on arduino board. All changes (i.e. graphical progress, figure movement, score display, game speed, etc) are all delivered to the user through the 2*16 screen.
 The following is a diagram of our circuit:
 
 Diagram drawn using fritzing (http://fritzing.org/home/) 
@@ -38,15 +38,11 @@ The piezo: connected to digital pin 7 and the ground respectively. Digital pin 7
 The potentiometer: The side potentiometer with two feet is connected to the 5V rail and the ground respectively, and the side with one foot is connected to analog pin A0, which reads the value of voltage across part of the potentiometer and maps it to 0-1023.
  
 Software
-adjustSpeed() receives no value and passes no value. This function reads in the value of volts determined by the potentiometer, and use a map function to map the value to a range between 1 and 16  to determine the speed of the coming blocks. It is later shown on the screen by another function. 
- 
-initializeGraphics() receives no value and passes no value. This function uses an array to store the appearances of digital figures under different positions and the terrains. The appearances and the terrains are represented by a combination of little grids of the LCD board. The function also includes two for loops to initialize the terrain and stores the appearances to the LCD board. 
- 
-advanceTerrain() receives two parameters, char* terrain and byte newTerrain. Moves the blocks in the background to the next frame.
- 
-drawHero() receives four parameters, byte position, char* terrainUpper, char* terrainLower, unsigned int score and returns a boolean value. The function uses a switch to determines the position of the figure. The function uses two if statement to decide if the figure collides with the blocks by checking if the figure’s position is the same as the block’s position.The function also changes the length of the display of the upper row of the screen as the score grows and digits increase. Finally, the function draws the figure on the screen based on its position.
- 
-buttonPush() receives and passes no parameters. This is used together with the attachInterrupt command. The function sets buttonPushed to true.
+1. adjustSpeed() receives no value and passes no value. This function reads in the value of volts determined by the potentiometer, and use a map function to map the value to a range between 1 and 16  to determine the speed of the coming blocks. It is later shown on the screen by another function. 
+2. initializeGraphics() receives no value and passes no value. This function uses an array to store the appearances of digital figures under different positions and the terrains. The appearances and the terrains are represented by a combination of little grids of the LCD board. The function also includes two for loops to initialize the terrain and stores the appearances to the LCD board. 
+3. advanceTerrain() receives two parameters, char* terrain and byte newTerrain. Moves the blocks in the background to the next frame.
+4. drawHero() receives four parameters, byte position, char* terrainUpper, char* terrainLower, unsigned int score and returns a boolean value. The function uses a switch to determines the position of the figure. The function uses two if statement to decide if the figure collides with the blocks by checking if the figure’s position is the same as the block’s position.The function also changes the length of the display of the upper row of the screen as the score grows and digits increase. Finally, the function draws the figure on the screen based on its position.
+5. buttonPush() receives and passes no parameters. This is used together with the attachInterrupt command. The function sets buttonPushed to true.
  
 In the setup() function, an attachInterrupt function is added to change the mode of button to true when volts on digital pin 2 falls. The setup function also initialize the graphics and set up the LCD screen.
  

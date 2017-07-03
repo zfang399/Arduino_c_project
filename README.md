@@ -1,15 +1,15 @@
 # Arduino_c_project
-Xiangyu Dong , Zhaoyuan Fang
-EE 10114
-Professor Fuja
-March 24th
-EE 10114 Project Report
-Executive Summary
+Xiangyu Dong , Zhaoyuan Fang <br />
+EE 10114 <br />
+Professor Fuja <br />
+March 24th, 2017 <br />
+EE 10114 Project Report <br />
+Executive Summary <br />
 Our group plans to build a simple horizontal version game with the arduino kit, LCD, piezo, potentiometer and button switch. In the game, users can use a button to control the movement of a digital figure that appears on the screen, to either jump up or down to avoid blocks coming to the figure. Functions such as sound (piezo), speed control (potentiometer) and score display (LCD) are included. The game is interactive and easy-to-play. 
  
-Background
-Motivation:
-The game we are making changes to is very similar to the popular parkour games that can be easily found in an app store. Although with limits of the length of the LCD screen, it is still exciting to change a plain LCD board into a playground. Played under a normal speed, the game is a good way to kill boring time; played under a high speed, the game can bring great excitement as it challenges a player’s cooperation of eyes and hands. It also integrates sounds and score display, which add more fun to the game.
+Background <br />
+Motivation: <br />
+The game we are making changes to is very similar to the popular parkour games that can be easily found in an app store. Although with limits of the length of the LCD screen, it is still exciting to change a plain LCD board into a playground. Played under a normal speed, the game is a good way to kill boring time; played under a high speed, the game can bring great excitement as it challenges a player’s cooperation of eyes and hands. It also integrates sounds and score display, which add more fun to the game. 
 Attribution:
 Our idea comes from an online project, which implements the basic gist of the game --- jumping, avoiding blocks, and showing the score. After understanding the logic of the game, we decided to make the following changes to the game, in order to make the game more player-friendly and interesting.
 1.     Sound --- We would like to incorporate the sound into the game. When the button is pressed, the piezo will make a sound of jumping. When the figure collides with a block, the piezo will make a different sound simulating the collision.

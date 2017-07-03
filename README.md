@@ -15,13 +15,13 @@ Our idea comes from an online project, which implements the basic gist of the ga
 1.     Sound --- We would like to incorporate the sound into the game. When the button is pressed, the piezo will make a sound of jumping. When the figure collides with a block, the piezo will make a different sound simulating the collision.
 2.     User-controlled speed --- At the beginning of the game, we want the player to choose the speed of the blocks coming to the figure. The player can choose from a range of number by turning the knob on the potentiometer. The current speed relative to the max speed is reflected by the number of illuminating LCD blocks. This function will make the game more interesting and friendlier to the player.
 3.     Highest score --- The player will be able to compare his score with the highest score he has ever achieved. When the user breaks his own record and set a new score, the arduino will play a “twinkle twinkle little star” to congratulate the user.
-Environmental Scan
+Environmental Scan <br />
 There are some devices like ours existing in the marketplace, but most of them are embedded in a much more complicated product. For example, the T-Rex Game of Chrome (appears when the Google browser is disconnected to the Internet) is similar to our design.
  
-Functional Description and Product Operation
+Functional Description and Product Operation <br />
 In the game, a digital figure appears on the screen, and users can use a button to control the movement of the person to jump up or down to avoid blocks coming to the figure. Before the game starts, the user can turn the potentiometer to adjust the speed of the blocks coming to the figure. To start the game, the user simply needs to press the button. When the game starts, blocks with random length will come to the user. To avoid running into the blocks, the user presses the button, and the position of the digital figure will change accordingly, jumping up or down. Meanwhile the button is pressed, the piezo will make a sound to make the jump more vivid. On the upper right hand corner of the LCD screen, the user’s current score will be displayed. If the figure collides into the blocks, the game is over. At the same time of collision, a piezo will make a beep, and the LCD will display the final screen, showing the score of this round the and highest score the player has achieved. After several seconds, the game will return to the initial state. From there, the game is restarted and the user can choose  to play again. 
  
-Hardware
+Hardware <br />
 Sensors/input:
 1. Button switch: The button switch is used to start the game and to ask the figure to jump. By attaching an interrupt of button to the program, we can make change to the display efficiently whenever the button is pushed. 
 2. Potentiometer: The potentiometer is used to control the speed of the blocks. At the beginning of the game, the potentiometer is used to adjust the speed of the game, shown by the number of illuminating blocks on the LCD. By connecting the potentiometer to one of the analog input, we can then map the value of analogRead to the interval of the speed. 
@@ -37,7 +37,7 @@ The button switch: connected to digital pin 2 and the ground respectively. When 
 The piezo: connected to digital pin 7 and the ground respectively. Digital pin 7 is a PWM pin so when the program sets different tones and pin 7 gives different duty cycles, resulting in the different tones of piezo.
 The potentiometer: The side potentiometer with two feet is connected to the 5V rail and the ground respectively, and the side with one foot is connected to analog pin A0, which reads the value of voltage across part of the potentiometer and maps it to 0-1023.
  
-Software
+Software <br />
 1. adjustSpeed() receives no value and passes no value. This function reads in the value of volts determined by the potentiometer, and use a map function to map the value to a range between 1 and 16  to determine the speed of the coming blocks. It is later shown on the screen by another function. 
 2. initializeGraphics() receives no value and passes no value. This function uses an array to store the appearances of digital figures under different positions and the terrains. The appearances and the terrains are represented by a combination of little grids of the LCD board. The function also includes two for loops to initialize the terrain and stores the appearances to the LCD board. 
 3. advanceTerrain() receives two parameters, char* terrain and byte newTerrain. Moves the blocks in the background to the next frame.
